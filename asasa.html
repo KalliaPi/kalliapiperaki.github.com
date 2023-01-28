@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Portfolio</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <h1>My Portfolio</h1>
+      <nav>
+        <ul>
+          <li><a href="#projects" class="active">Projects</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="projects" class="active">
+        <h2>Projects</h2>
+        <ul>
+          <li>Project 1</li>
+          <li>Project 2</li>
+          <li>Project 3</li>
+        </ul>
+      </section>
+      <section id="about">
+        <h2>About</h2>
+        <p>Write something about yourself here</p>
+      </section>
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Your contact information here</p>
+      </section>
+    </main>
+    <footer>
+      <p>Copyright © 2021 My Name</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
+body {
+  font-family: Arial, sans-serif;
+}
+
+header, footer {
+  background-color: #333;
+  color: #fff;
+  padding: 1em;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin-right: 1em;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+}
+
+main {
+  margin: 2em;
+}
+
+section {
+  display: none;
+}
+
+section.active {
+  display: block;
+}
+const navLinks = document.querySelectorAll("nav a");
+const sections = document.querySelectorAll("section");
+
+navLinks.forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
+    const id = e.target.getAttribute("href");
+    const section = document.querySelector(id);
+    
+    sections.forEach(s => {
+      s.classList.remove("active");
+    });
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+    });
+    
+    section.classList.add("active");
+    e.target.classList.add("active");
+  });
+});
